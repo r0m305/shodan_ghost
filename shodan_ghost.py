@@ -45,6 +45,7 @@ class Engine:
 
         else:
             print(colored("Invalid choice. Exiting...","red"))
+            sys.exit()
 
         if os.path.exists("api.txt"):
             f = open("api.txt","r")
