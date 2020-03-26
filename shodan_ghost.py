@@ -83,6 +83,8 @@ class Engine:
 
             except Exception as e:
                 pass
+                  
+            time.sleep(0.3)
 
 
 if __name__ == '__main__':
