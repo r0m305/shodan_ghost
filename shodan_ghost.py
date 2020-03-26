@@ -38,7 +38,7 @@ class Engine:
         choice = input(f"{Fore.RED}[{Fore.BLUE}*{Fore.RED}]{Fore.GREEN}Would you like to save you results to a text file?(Y/n){Fore.BLUE}")
         if choice == "Y" or choice == 'y':
             filename = input(f"{Fore.RED}[{Fore.BLUE}*{Fore.RED}]{Fore.GREEN}Enter the name for the text file:{Fore.YELLOW}")
-            file = open(filename,"a")
+            file = open(filename+".txt","a")
 
         elif choice == "N" or choice == 'n':
             print(f"{Fore.RED}[{Fore.BLUE}*{Fore.RED}]{Fore.GREEN}Continuing without saving...!")
