@@ -70,22 +70,29 @@ class Engine:
             print("\n")
             print(colored("<--"+"*"*30+"-->","yellow"))
             print(f"{Fore.GREEN}IP Address : {Fore.YELLOW}{finding['ip_str']}")
+            host = api.host(finding['ip_str'])
             print(f"{Fore.GREEN}Transport : {Fore.YELLOW}{finding['transport']}")
             print(f"{Fore.GREEN}Port : {Fore.YELLOW}{finding['port']}")
+            print(f"{Fore.GREEN}Other ports on host: {Fore.YELLOW}{str(host['ports']).strip('[]')}")
             #print(f"{Fore.GREEN}cpe : {Fore.YELLOW}{finding['cpe']}")
             print(f"{Fore.GREEN}OS : {Fore.YELLOW}{finding['os']}")
             print(f"{Fore.GREEN}Location : {Fore.YELLOW}{finding['location']}")
             print(f"{Fore.GREEN}Timestamp : {Fore.YELLOW}{finding['timestamp']}")
             print(f"{Fore.GREEN}Organization : {Fore.YELLOW}{finding['org']}")
+            try:
+                print(f"{Fore.GREEN}Vulnerabilities: {Fore.RED}{str(host['vulns']).strip('[]]')}")
+
+            except:
+                pass
+
             #print(f"{Fore.GREEN}ISP : {Fore.YELLOW}{finding['isp']}")
             print(f"{Fore.GREEN}Data:\n{Fore.YELLOW}{finding['data']}")
             try:
-                self.writer(file, "ip address:"+finding['ip_str']+"\nTransport"+finding['transport']+"\nPort:"+str(finding['port'])+"\nLocation:"+str(finding['location'])+"\ntimestamp:"+finding['timestamp']+"\nOrg:"+finding['org']+"\n"+finding['data'])
+                self.writer(file, "ip address:"+finding['ip_str']+"\nTransport"+finding['transport']+"\nPort:"+str(finding['port'])+"Vulnerabilities:"+str(host['vulns']).strip('[]')+"\nLocation:"+str(finding['location'])+"\ntimestamp:"+finding['timestamp']+"\nOrg:"+finding['org']+"\n"+finding['data'])
 
             except Exception as e:
                 pass
-                  
-            time.sleep(0.2)
+
 
 
 if __name__ == '__main__':
