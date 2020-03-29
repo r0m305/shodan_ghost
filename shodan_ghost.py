@@ -59,6 +59,8 @@ class Engine:
         try:
             api = shodan.Shodan(api_key)
             search_data = api.search(query)
+            print(f"{Fore.RED}[{Fore.BLUE}*{Fore.RED}]{Fore.GREEN}Matches found: {Fore.RED}{search_data['total']}")
+            time.sleep(2)
             f = open("api.txt","w")
             f.write(api_key)
             f.close()
@@ -74,7 +76,10 @@ class Engine:
             print(f"{Fore.GREEN}Transport : {Fore.YELLOW}{finding['transport']}")
             print(f"{Fore.GREEN}Port : {Fore.YELLOW}{finding['port']}")
             print(f"{Fore.GREEN}Other ports on host: {Fore.YELLOW}{str(host['ports']).strip('[]')}")
-            #print(f"{Fore.GREEN}cpe : {Fore.YELLOW}{finding['cpe']}")
+            try:
+                print(f"{Fore.GREEN}cpe : {Fore.YELLOW}{str(finding['cpe']).strip('[]')}")
+            except:
+                pass
             print(f"{Fore.GREEN}OS : {Fore.YELLOW}{finding['os']}")
             print(f"{Fore.GREEN}Location : {Fore.YELLOW}{finding['location']}")
             print(f"{Fore.GREEN}Timestamp : {Fore.YELLOW}{finding['timestamp']}")
