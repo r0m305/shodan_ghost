@@ -23,6 +23,8 @@ GitHub: https://github.com/lewiswaigwa
 
 
 simple usage:
+python3 -m pip install -r requirements.txt
+chmod +x shodan_ghost.py
 python3 shodan_ghost.py 
 
 Follow the wizard. Happy hacking!!
